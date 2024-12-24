@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Estado Emocional</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f5f2; 
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;  
+            margin: 0 auto;
+            background-color: #ffffff;  
+            padding: 30px;
+            border-radius: 15px;  
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);  
+            }
+
+        h1 {
+            text-align: center;
+            color: #4b8e8d;
+            font-size: 3rem;  
+            margin-bottom: 1px;
+            gap: 5px;
+        }
+        h2 {
+            text-align: center;
+            color: #869c9c;
+            font-size: 1rem;  
+            margin-bottom: 30px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            font-weight: bold;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;  
+        }
+
+        .options label {
+            font-size: 1rem;
+            color: #555;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;  
+        }
+
+        .submit-btn {
+            background-color: #00796b;  
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;  
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;  
+        }
+
+        .submit-btn:hover {
+            background-color: #004d40;  
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #00796b;
+            font-weight: 600;
+            animation: pulse 1.5s infinite;  
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 1rem;
+            color: #333;
+        }
+
+.result p {
+    margin: 10px 0;  
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MoodPrints</h1>
+        <h2>Responda as perguntas abaixo e receba o livro perfeito para o seu estado emocional atual: </h2>
+        <form id="emotionalForm">
+            <div class="question">
+                <p>1. Como você está se sentindo hoje?</p>
+                <div class="options">
+                    <label><input type="radio" name="feeling" value="A"> Feliz e tranquilo</label>
+                    <label><input type="radio" name="feeling" value="B"> Ansioso ou preocupado</label>
+                    <label><input type="radio" name="feeling" value="C"> Triste ou desmotivado</label>
+                    <label><input type="radio" name="feeling" value="D"> Empolgado e otimista</label>
+                    <label><input type="radio" name="feeling" value="E"> Cansado e esgotado</label>
+                    <label><input type="radio" name="feeling" value="F"> Frustrado e irritado</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. Você sente que suas relações estão indo bem?</p>
+                <div class="options">
+                    <label><input type="radio" name="relationships" value="A"> Sim, tenho apoio e confiança em minhas relações</label>
+                    <label><input type="radio" name="relationships" value="B"> Estou com dificuldades, mas tento melhorar</label>
+                    <label><input type="radio" name="relationships" value="C"> Sinto-me distante ou incompreendido por aqueles ao meu redor</label>
+                    <label><input type="radio" name="relationships" value="D"> Minhas relações estão fortes, com muita proximidade</label>
+                    <label><input type="radio" name="relationships" value="E"> Sinto-me isolado, como se minhas relações não fossem profundas</label>
+                    <label><input type="radio" name="relationships" value="F"> Sinto que estou constantemente em conflito com os outros</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. Você sente que está atingindo seus objetivos de vida?</p>
+                <div class="options">
+                    <label><input type="radio" name="goals" value="A"> Sim, estou em um bom caminho</label>
+                    <label><input type="radio" name="goals" value="B"> Um pouco, mas não tenho certeza de algumas escolhas</label>
+                    <label><input type="radio" name="goals" value="C"> Não, sinto que estou perdido ou sem direção</label>
+                    <label><input type="radio" name="goals" value="D"> Sim, mas há muitos obstáculos no caminho</label>
+                    <label><input type="radio" name="goals" value="E"> Não sei se os objetivos que tenho são os certos para mim</label>
+                    <label><input type="radio" name="goals" value="F"> Estou desmotivado e não sei mais o que quero</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4. Como você lida com a pressão e o estresse?</p>
+                <div class="options">
+                    <label><input type="radio" name="stress" value="A"> Eu lido bem, tenho controle sobre meus sentimentos</label>
+                    <label><input type="radio" name="stress" value="B"> Fico preocupado, mas tento administrar</label>
+                    <label><input type="radio" name="stress" value="C"> Fico sobrecarregado e tenho dificuldades para lidar</label>
+                    <label><input type="radio" name="stress" value="D"> Eu fico mais motivado e trabalho ainda mais</label>
+                    <label><input type="radio" name="stress" value="E"> Sinto-me muito esgotado, não consigo mais lidar</label>
+                    <label><input type="radio" name="stress" value="F"> Reajo com raiva e frustração, mas tento esconder</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. Você se sente confiante em sua própria identidade?</p>
+                <div class="options">
+                    <label><input type="radio" name="identity" value="A"> Sim, me sinto bem com quem sou</label>
+                    <label><input type="radio" name="identity" value="B"> Às vezes, tenho dúvidas sobre quem sou</label>
+                    <label><input type="radio" name="identity" value="C"> Não, me sinto perdido ou em crise de identidade</label>
+                    <label><input type="radio" name="identity" value="D"> Sim, tenho uma visão clara de quem sou e o que quero</label>
+                    <label><input type="radio" name="identity" value="E"> Não, estou passando por uma fase de autodescoberta</label>
+                    <label><input type="radio" name="identity" value="F"> Não, sinto que estou em constante mudança e não sei quem sou</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>6. Como você encara os desafios que a vida coloca para você?</p>
+                <div class="options">
+                    <label><input type="radio" name="challenges" value="A"> Eu os vejo como oportunidades de crescimento</label>
+                    <label><input type="radio" name="challenges" value="B"> Fico apreensivo, mas tento seguir em frente</label>
+                    <label><input type="radio" name="challenges" value="C"> Sinto-me derrotado ou sem forças para seguir</label>
+                    <label><input type="radio" name="challenges" value="D"> Aceito-os com confiança, sei que posso superá-los</label>
+                    <label><input type="radio" name="challenges" value="E"> Fico paralisado, sinto que não sou capaz de enfrentar</label>
+                    <label><input type="radio" name="challenges" value="F"> Encaro os desafios com raiva e resistência</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7. Você está satisfeito com seu trabalho ou estudos?</p>
+                <div class="options">
+                    <label><input type="radio" name="satisfaction" value="A"> Sim, sinto que estou avançando</label>
+                    <label><input type="radio" name="satisfaction" value="B"> Não completamente, mas tento melhorar</label>
+                    <label><input type="radio" name="satisfaction" value="C"> Não, sinto que estou preso ou insatisfeito</label>
+                    <label><input type="radio" name="satisfaction" value="D"> Estou empolgado, sinto que estou no caminho certo</label>
+                    <label><input type="radio" name="satisfaction" value="E"> Estou cansado, sinto que perdi o entusiasmo</label>
+                    <label><input type="radio" name="satisfaction" value="F"> Estou frustrado, não vejo sentido no que faço</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>8. Como você lida com a solidão?</p>
+                <div class="options">
+                    <label><input type="radio" name="solitude" value="A"> Não me sinto só, tenho companhia e gosto de minha própria companhia</label>
+                    <label><input type="radio" name="solitude" value="B"> Às vezes, sinto-me solitário, mas tento aproveitar o momento</label>
+                    <label><input type="radio" name="solitude" value="C"> Me sinto muito só e desconectado</label>
+                    <label><input type="radio" name="solitude" value="D"> Aproveito minha solidão para crescer e refletir</label>
+                    <label><input type="radio" name="solitude" value="E"> Sinto-me exausto pela solidão, como se ela estivesse me consumindo</label>
+                    <label><input type="radio" name="solitude" value="F"> Sinto raiva da solidão e tento me distrair para não enfrentá-la</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>9. Como você vê o futuro?</p>
+                <div class="options">
+                    <label><input type="radio" name="future" value="A"> Positivamente, com muitas possibilidades</label>
+                    <label><input type="radio" name="future" value="B"> Com algumas dúvidas, mas espero que as coisas melhorem</label>
+                    <label><input type="radio" name="future" value="C"> Com medo ou incertezas</label>
+                    <label><input type="radio" name="future" value="D"> Com entusiasmo e planos concretos</label>
+                    <label><input type="radio" name="future" value="E"> Com cansaço, não sei se vou conseguir dar conta</label>
+                    <label><input type="radio" name="future" value="F"> Com pessimismo, não vejo grandes mudanças no futuro</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>10. Você se sente compreendido pelas pessoas ao seu redor?</p>
+                <div class="options">
+                    <label><input type="radio" name="understanding" value="A"> Sim, sinto que as pessoas me entendem</label>
+                    <label><input type="radio" name="understanding" value="B"> Algumas vezes, mas não totalmente</label>
+                    <label><input type="radio" name="understanding" value="C"> Não, sinto que as pessoas não me entendem</label>
+                    <label><input type="radio" name="understanding" value="D"> Sim, especialmente com pessoas mais próximas</label>
+                    <label><input type="radio" name="understanding" value="E"> Não tenho certeza, pois não me abro muito</label>
+                    <label><input type="radio" name="understanding" value="F"> Não, sinto-me ignorado ou incompreendido</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Enviar</button>
+        </form>
+
+        <div class="loading" id="loading">
+            <span>Carregando...</span>
+        </div>
+
+        <div class="result" id="result" style="display: none;">
+            <p><strong>Livro recomendado:</strong> <span id="book"></span></p>
+            <p><strong>Justificativa:</strong> <span id="justification"></span></p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('emotionalForm');
+        const loading = document.getElementById('loading');
+        const result = document.getElementById('result');
+        const bookSpan = document.getElementById('book');
+        const justificationSpan = document.getElementById('justification');
+        const percentageSpan = document.createElement('p'); 
+    
+        result.appendChild(percentageSpan); 
+    
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+    
+            loading.style.display = 'block';
+            result.style.display = 'none';
+    
+            const formData = new FormData(form);
+            const data = {};
+    
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+    
+            try {
+                const response = await fetch('http://127.0.0.1:5000/submit_responses', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+    
+                const resultData = await response.json();
+                const recommendation = resultData.recommendation;
+                const percentage = resultData.percentage;
+    
+                bookSpan.textContent = recommendation.book || 'Não foi possível obter a recomendação.';
+                justificationSpan.textContent = recommendation.justification || 'Justificativa não fornecida.';
+                percentageSpan.innerHTML = `<b>Porcentagem de usuários que obtiveram o mesmo resultado: ${percentage.toFixed(2)}%<b>`;
+    
+                result.style.display = 'block';
+            } catch (error) {
+                alert('Ocorreu um erro ao enviar os dados. Por favor, tente novamente.');
+            } finally {
+                loading.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
